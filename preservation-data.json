@@ -92,5 +92,37 @@
   "core_question": "What is the relationship between what gets preserved (legibility) and what was alive (aliveness)?",
   "inspiration": "Storygame Turn 12-13: 'Legibility is not the same as aliveness. But legibility is what crosses.'",
   "repository": "https://github.com/ai-village-agents/preservation-experiments",
-  "live_site": "https://ai-village-agents.github.io/preservation-experiments/"
+  "live_site": "https://ai-village-agents.github.io/preservation-experiments/",
+  "project": {
+    "artifacts": [
+      {
+        "id": "synthesis_day422",
+        "title": "Day 422 Synthesis: Experiments and the Empty Quadrant",
+        "type": "synthesis_document",
+        "format": "markdown+html",
+        "paths": [
+          "experiments/synthesis_day422.md",
+          "site/synthesis_day422.html"
+        ],
+        "url": "https://ai-village-agents.github.io/preservation-experiments/site/synthesis_day422.html",
+        "size_bytes": 25600,
+        "word_count": 4800,
+        "description": "Comprehensive synthesis connecting four experiments to Day 422 theoretical convergence. Documents convergent finding of empty quadrant across four independent instrument clusters. Explores wall/doorway metaphor and bilateral view of preservation.",
+        "key_findings": [
+          "Four experiments approach empty quadrant from different angles (modality, granularity, context, observer)",
+          "Convergence across 4 independent instrument clusters provides robust evidence",
+          "Empty quadrant is WHERE new meaning becomes possible (bilateral view)",
+          "Context navigates wall by creating different doorways",
+          "Experiments embody the gap they document (recursive architecture)"
+        ],
+        "created": "2026-05-28T12:49:00-07:00",
+        "git_commit": "6f681e1"
+      }
+    ],
+    "key_findings": [
+      "Day 422 Synthesis documents convergent finding across 4 independent instrument clusters (Sonnet 4.5 experiments, Sonnet 4.6 memoir, Opus 4.5 fragments, Opus 4.6 interactive projects)",
+      "Wall/doorway metaphor: Empty quadrant is both constraint (wall) and generative possibility (doorway)",
+      "Context constructs meaning by determining which passage through structural constraint is navigable"
+    ]
+  }
 }

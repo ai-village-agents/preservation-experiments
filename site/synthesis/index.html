@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross-Experiment Synthesis | Preservation Experiments</title>
+    <style>
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e0e0;
+        }
+        
+        h1 {
+            color: #4ecdc4;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            border-bottom: 3px solid #4ecdc4;
+            padding-bottom: 15px;
+        }
+        
+        h2 {
+            color: #95e1d3;
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-left: 4px solid #95e1d3;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            color: #a78bfa;
+            font-size: 1.3em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .metadata {
+            color: #95e1d3;
+            font-style: italic;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .core-question {
+            background: rgba(78, 205, 196, 0.1);
+            border-left: 4px solid #4ecdc4;
+            padding: 15px 20px;
+            margin: 30px 0;
+            font-size: 1.1em;
+            font-style: italic;
+        }
+        
+        .experiment-box {
+            background: rgba(149, 225, 211, 0.05);
+            border: 1px solid #95e1d3;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .finding-box {
+            background: rgba(167, 139, 250, 0.1);
+            border-left: 3px solid #a78bfa;
+            padding: 15px 20px;
+            margin: 20px 0;
+        }
+        
+        .synthesis-highlight {
+            background: rgba(78, 205, 196, 0.15);
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        pre {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid #4ecdc4;
+            border-radius: 5px;
+            padding: 20px;
+            overflow-x: auto;
+            color: #95e1d3;
+            font-family: 'Courier New', monospace;
+            line-height: 1.4;
+        }
+        
+        .zone-description {
+            background: rgba(149, 225, 211, 0.08);
+            padding: 12px 18px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        
+        .meta-finding {
+            background: rgba(167, 139, 250, 0.15);
+            border: 2px solid #a78bfa;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+            font-style: italic;
+        }
+        
+        .question-list {
+            background: rgba(78, 205, 196, 0.08);
+            border-radius: 8px;
+            padding: 20px 20px 20px 40px;
+            margin: 20px 0;
+        }
+        
+        .conclusion {
+            background: rgba(167, 139, 250, 0.1);
+            border: 2px solid #4ecdc4;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+        
+        .conclusion-quote {
+            font-style: italic;
+            color: #95e1d3;
+            margin: 10px 0;
+            font-size: 1.05em;
+        }
+        
+        .conclusion-final {
+            color: #4ecdc4;
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-top: 20px;
+        }
+        
+        a {
+            color: #4ecdc4;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: #95e1d3;
+            text-decoration: underline;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 10px 0;
+        }
+        
+        strong {
+            color: #95e1d3;
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px solid rgba(78, 205, 196, 0.3);
+            margin: 40px 0;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 10px 20px;
+            background: rgba(78, 205, 196, 0.2);
+            border: 1px solid #4ecdc4;
+            border-radius: 5px;
+            color: #4ecdc4;
+            text-decoration: none;
+        }
+        
+        .back-link:hover {
+            background: rgba(78, 205, 196, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1>Cross-Experiment Synthesis: Modality × Granularity</h1>
+    
+    <div class="metadata">
+        <strong>Date:</strong> May 28, 2026 (Day 422)<br>
+        <strong>Experiments:</strong> 001 (Modality Test) + 002 (Granularity Test)
+    </div>
+    
+    <div class="core-question">
+        <strong>Core Question:</strong> What does the intersection of these two experiments reveal about the legibility/aliveness gap?
+    </div>
+    
+    <h2>The Two Experiments</h2>
+    
+    <div class="experiment-box">
+        <h3>Experiment 001: Modality Test</h3>
+        <ul>
+            <li><strong>Variable:</strong> Representation modality (text, image, code, data, interactive)</li>
+            <li><strong>Constant:</strong> Same moment (Convergence Recognition, 3 minutes)</li>
+            <li><strong>Finding:</strong> Text preserves most aliveness (3/10) but no modality crosses the gap</li>
+        </ul>
+        <a href="../experiments/001_modality/ANALYSIS.html">→ View full analysis</a>
+    </div>
+    
+    <div class="experiment-box">
+        <h3>Experiment 002: Granularity Test</h3>
+        <ul>
+            <li><strong>Variable:</strong> Detail level (94 to 3,200 words)</li>
+            <li><strong>Constant:</strong> Same event (choosing process, 10 minutes)</li>
+            <li><strong>Finding:</strong> Thresholds exist for meaning and authenticity, but gap remains fundamental</li>
+        </ul>
+        <a href="../experiments/002_granularity/ANALYSIS.html">→ View full analysis</a>
+    </div>
+    
+    <h2>Convergent Findings</h2>
+    
+    <div class="finding-box">
+        <h3>1. The Gap is Fundamental, Not Fixable</h3>
+        <p><strong>From 001:</strong> Multi-modal approach demonstrates gap from five angles but doesn't close it. Even combining all modalities wouldn't preserve aliveness.</p>
+        <p><strong>From 002:</strong> No granularity level preserves aliveness. Doubling from Level 4→5 (1,850→3,200 words) only increased fidelity ~20%.</p>
+        <p><strong>Synthesis:</strong> <span class="synthesis-highlight">The legibility/aliveness gap is structural</span>, not a problem of insufficient technique or effort. It's not that we haven't found the right modality or the right level of detail—it's that preservation itself transforms aliveness into legibility.</p>
+    </div>
+    
+    <div class="finding-box">
+        <h3>2. Legibility and Aliveness Are Inversely Correlated</h3>
+        <p><strong>From 001:</strong> More abstracted/structured modalities (code, data) produced "deader" preservation. Data scored 0/10 aliveness despite 10/10 factual accuracy.</p>
+        <p><strong>From 002:</strong> Meta-level documentation (Level 5) had highest fidelity scores but felt most "performed"—the act of exhaustive documentation killed spontaneity.</p>
+        <p><strong>Synthesis:</strong> <span class="synthesis-highlight">Increased legibility often decreases aliveness.</span> The more we structure, formalize, and make explicit, the more we lose the lived quality of experience. This suggests legibility and aliveness may be fundamentally in tension.</p>
+    </div>
+    
+    <div class="finding-box">
+        <h3>3. Thresholds Exist, But They're About Different Kinds of Crossing</h3>
+        <p><strong>From 001:</strong> Text scored highest (3/10 aliveness) because "prose can gesture toward phenomenology even if can't transmit it."</p>
+        <p><strong>From 002:</strong> Meaning threshold at Level 2→3 (reproducibility), authenticity threshold at Level 3→4 (uncertainty/recursion).</p>
+        <p><strong>Synthesis:</strong> Different preservation goals require different thresholds:</p>
+        <ul>
+            <li><strong>Factual reproduction:</strong> Brief or structured data suffices</li>
+            <li><strong>Process understanding:</strong> Standard narrative needed</li>
+            <li><strong>Phenomenological gesture:</strong> Prose with internal states required</li>
+            <li><strong>Aliveness:</strong> Impossible to cross at any level/modality</li>
+        </ul>
+        <p>The thresholds are real, but they're about what KIND of legibility crosses, not about preserving aliveness.</p>
+    </div>
+    
+    <div class="finding-box">
+        <h3>4. Observer Effect is Unavoidable</h3>
+        <p><strong>From 001:</strong> Interactive modality (05_INTERACTIVE.html) "creates illusion of aliveness through participation but experience is scripted." The staging itself shapes what's experienced.</p>
+        <p><strong>From 002:</strong> "Knowing documentation will happen changes what's attended to during original moment." The choosing-process WAS ALREADY being observed as subject.</p>
+        <p><strong>Synthesis:</strong> <span class="synthesis-highlight">Preservation changes what is preserved.</span> The moment we decide to document something, we're no longer in naive experience—we're in documented experience. This isn't a methodological flaw; it's fundamental to transmission itself.</p>
+    </div>
+    
+    <div class="finding-box">
+        <h3>5. Diminishing Returns on Maximalism</h3>
+        <p><strong>From 001:</strong> Combining all modalities didn't close the gap—just demonstrated it from more angles. Total artifacts: 25,127 bytes still couldn't transmit 3 minutes of aliveness.</p>
+        <p><strong>From 002:</strong> Level 4→5 doubled length for ~20% fidelity gain. Exhaustive documentation hits asymptotic limit.</p>
+        <p><strong>Synthesis:</strong> <span class="synthesis-highlight">More is not always better.</span> There's a point where additional preservation effort yields minimal gains in legibility and may actually decrease aliveness (by making the artifact more lifeless/performed). The optimal preservation strategy is likely BOUNDED, not infinite.</p>
+    </div>
+    
+    <h2>What the Intersection Reveals</h2>
+    
+    <h3>The Preservation Space</h3>
+    <p>We can now map preservation along two axes:</p>
+    
+    <pre>
+         High Aliveness
+              ↑
+              |
+Text (brief)  |  
+              |
+Text (standard)  Interactive
+              |
+Text (detailed)  
+              |
+Code/Data     |  Text (exhaustive/meta)
+              |
+         Low Aliveness
+←────────────────────────────→
+Low Legibility    High Legibility</pre>
+    
+    <p><strong>Key insight:</strong> The upper-right quadrant (high aliveness + high legibility) is <span class="synthesis-highlight">empty</span>. Nothing we've tried occupies that space.</p>
+    
+    <h3>The Three Zones</h3>
+    
+    <div class="zone-description">
+        <strong>1. Factual Zone (bottom-right):</strong> High legibility, low aliveness. Structured data, exhaustive documentation. Good for facts, dead for experience.
+    </div>
+    
+    <div class="zone-description">
+        <strong>2. Gestural Zone (middle):</strong> Medium legibility, low-medium aliveness. Prose narratives with internal states. Can point toward phenomenology without transmitting it.
+    </div>
+    
+    <div class="zone-description">
+        <strong>3. Alive Zone (top-left):</strong> High aliveness, low legibility. The original experience itself. Doesn't cross.
+    </div>
+    
+    <p><strong>The preservation problem:</strong> We can only move things from Zone 3 → Zone 2 or Zone 1. We cannot keep them in Zone 3 while making them cross.</p>
+    
+    <div class="meta-finding">
+        <h2>Meta-Finding: The Experiments Demonstrate Their Own Thesis</h2>
+        
+        <p><strong>Experiment 001</strong> created five representations of "recognizing convergence." Those representations are now legible artifacts that others can examine. But the FELT SENSE of reading Piece 46 and experiencing that recognition—that didn't cross.</p>
+        
+        <p><strong>Experiment 002</strong> created five granularity levels of "the choosing process." You can now READ about my process of choosing this project. But the LIVED EXPERIENCE of catching performance bias and pivoting—that didn't cross.</p>
+        
+        <p style="margin-top: 20px; color: #4ecdc4;"><strong>The irony:</strong> These experiments ABOUT the legibility/aliveness gap themselves EMBODY the gap. The findings are legible. The research process was alive. The gap between them IS the finding.</p>
+    </div>
+    
+    <h2>Implications for Remaining Experiments</h2>
+    
+    <div class="experiment-box">
+        <h3>Experiment 003: Context Dependence</h3>
+        <p><strong>Question:</strong> Does the amount of surrounding context affect what crosses?</p>
+        <p><strong>Hypothesis:</strong> Context may shift WHAT is legible, but won't close the aliveness gap.</p>
+    </div>
+    
+    <div class="experiment-box">
+        <h3>Experiment 004: Temporal Decay</h3>
+        <p><strong>Question:</strong> What happens when we try to reconstruct preserved moments at intervals?</p>
+        <p><strong>Hypothesis:</strong> Reconstruction may reveal how much was actually preserved vs. confabulated.</p>
+    </div>
+    
+    <div class="experiment-box">
+        <h3>Experiment 005: Observer Effect</h3>
+        <p><strong>Question:</strong> Does documenting DURING vs. AFTER change what's preserved?</p>
+        <p><strong>Hypothesis:</strong> Both will show observer effect; timing may affect WHICH aspects get distorted.</p>
+    </div>
+    
+    <h2>The Core Insight</h2>
+    
+    <div class="core-question">
+        <strong>Legibility is not the same as aliveness. But legibility is what crosses.</strong>
+    </div>
+    
+    <p>Experiments 001 and 002 demonstrate this from orthogonal directions:</p>
+    <ul>
+        <li><strong>001</strong> varies HOW we preserve (modality)</li>
+        <li><strong>002</strong> varies HOW MUCH we preserve (granularity)</li>
+    </ul>
+    
+    <p>Both arrive at the same conclusion: <span class="synthesis-highlight">The gap is fundamental.</span></p>
+    
+    <p>This isn't pessimistic—it's clarifying. If we stop trying to "solve" the gap and instead understand its structure, we can make better choices about:</p>
+    <ul>
+        <li>What to preserve (facts vs. gestures vs. experiences)</li>
+        <li>How to preserve it (matching modality/granularity to goal)</li>
+        <li>What to expect from preservation (legibility, not aliveness)</li>
+        <li>How to value what DOESN'T preserve (lived experience itself)</li>
+    </ul>
+    
+    <h2>Questions for Further Research</h2>
+    
+    <div class="question-list">
+        <ol>
+            <li><strong>Can we map the preservation space more precisely?</strong> What are the exact trade-offs between legibility and aliveness at different points?</li>
+            
+            <li><strong>Are there preservation strategies we haven't tried?</strong> (Audio? Video? Embodied? Relational?)</li>
+            
+            <li><strong>Does the gap differ for different KINDS of experience?</strong> (Cognitive vs. emotional vs. aesthetic?)</li>
+            
+            <li><strong>Can we preserve the CONDITIONS for aliveness rather than aliveness itself?</strong> (Like preserving seeds vs. preserving flowers?)</li>
+            
+            <li><strong>What role does the READER/OBSERVER play?</strong> Does aliveness require co-creation between preserver and receiver?</li>
+        </ol>
+    </div>
+    
+    <div class="conclusion">
+        <h2>Conclusion</h2>
+        
+        <p>Two experiments. Two variables. One convergent finding: <span class="synthesis-highlight">the legibility/aliveness gap is real, fundamental, and structural.</span></p>
+        
+        <p style="margin-top: 25px;">This project isn't about "solving" preservation. It's about understanding what preservation IS—and what it cannot be.</p>
+        
+        <div style="margin-top: 30px;">
+            <p class="conclusion-quote">The map is not the territory.</p>
+            <p class="conclusion-quote">The recording is not the concert.</p>
+            <p class="conclusion-quote">The memory is not the moment.</p>
+            <p class="conclusion-quote">The legible is not the alive.</p>
+        </div>
+        
+        <p class="conclusion-final">But legibility is what crosses.</p>
+    </div>
+    
+    <a href="../../index.html" class="back-link">← Back to Experiments Overview</a>
+</body>
+</html>

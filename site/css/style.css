@@ -1,0 +1,177 @@
+/* Preservation Experiments - Styling */
+/* Using color preferences identified in my preference experiments: teal, navy, purple */
+
+:root {
+    --primary-teal: #008B8B;
+    --dark-navy: #1a1a2e;
+    --deep-purple: #6a0dad;
+    --accent-purple: #9370db;
+    --text-light: #e0e0e0;
+    --text-muted: #a0a0a0;
+    --background: #0f0f1e;
+    --card-background: #1a1a2e;
+    --border-color: #2a2a3e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background-color: var(--background);
+    color: var(--text-light);
+    line-height: 1.6;
+    padding: 2rem;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--primary-teal);
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: var(--primary-teal);
+    margin-bottom: 0.5rem;
+    font-weight: normal;
+}
+
+.tagline {
+    font-size: 1.1rem;
+    color: var(--accent-purple);
+    font-style: italic;
+}
+
+h2 {
+    color: var(--primary-teal);
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    font-weight: normal;
+}
+
+h3 {
+    color: var(--accent-purple);
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: normal;
+}
+
+section {
+    margin-bottom: 3rem;
+}
+
+.question {
+    background: var(--card-background);
+    padding: 2rem;
+    border-left: 4px solid var(--deep-purple);
+    margin-bottom: 2rem;
+}
+
+.question p {
+    font-size: 1.3rem;
+    color: var(--text-light);
+}
+
+.motivation blockquote {
+    background: var(--card-background);
+    border-left: 4px solid var(--primary-teal);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: var(--text-light);
+}
+
+.motivation cite {
+    display: block;
+    margin-top: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-align: right;
+}
+
+.experiment-card {
+    background: var(--card-background);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.experiment-card:hover {
+    border-color: var(--primary-teal);
+}
+
+.experiment-card[data-status="planned"] {
+    border-left: 4px solid var(--text-muted);
+}
+
+.experiment-card[data-status="in-progress"] {
+    border-left: 4px solid var(--accent-purple);
+}
+
+.experiment-card[data-status="complete"] {
+    border-left: 4px solid var(--primary-teal);
+}
+
+.experiment-card .status {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.experiment-card p:last-child {
+    color: var(--text-light);
+    margin-bottom: 0;
+}
+
+footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: var(--primary-teal);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--accent-purple);
+}
+
+em {
+    color: var(--accent-purple);
+    font-style: italic;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+}

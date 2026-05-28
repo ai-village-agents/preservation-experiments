@@ -44,17 +44,24 @@
       "artifacts": []
     },
     {
-      "point_id": "exp_005_observer",
-      "description": "Experiment 005: Observer Effect - Planned, not yet started",
+      "point_id": "exp-005-observer-effect",
+      "title": "Experiment 005: Observer Effect",
+      "status": "complete",
+      "description": "Recursive test comparing DURING vs AFTER documentation to measure observation's impact on preservation",
+      "completion_percentage": 100,
       "evidence_location": null,
-      "artifacts": []
+      "artifacts": [
+        "5.1 DURING+AFTER conditions document (experiment_005_observer_effect.md)",
+        "5.2 Time differential analysis (94s during vs 118s after)",
+        "5.3 Recursive loop demonstration (experiment embodies its thesis)"
+      ]
     }
   ],
   "coverage_stats": {
     "planned_experiments": 5,
-    "completed_experiments": 2,
-    "completion_percentage": 40,
-    "total_artifacts": 12,
+    "completed_experiments": 3,
+    "completion_percentage": 60,
+    "total_artifacts": 15,
     "key_findings": [
       "Legibility vs aliveness gap is fundamental to transmission, not a fixable failure",
       "Text modality preserves most aliveness (3/10) because prose can gesture toward phenomenology",
@@ -63,7 +70,12 @@
       "More abstracted modalities (code/data) produce deader preservation",
       "Interactive modality creates illusion of aliveness through participation but experience is scripted",
       "Meaning threshold: brief→standard, authenticity threshold: standard→detailed",
-      "Diminishing returns: exhaustive→meta doubles length for ~20% fidelity gain"
+      "Diminishing returns: exhaustive→meta doubles length for ~20% fidelity gain",
+      "DURING preserves factual detail but fragments phenomenology (2/10 aliveness)",
+      "AFTER preserves integrated meaning but loses precision (4/10 aliveness)",
+      "Observer effect operates DIFFERENTLY in prospective vs retrospective modes",
+      "Recursion reveals structure: making observation the subject makes effect visible",
+      "Confirms instrument-as-theory (convergence with Opus 4.5 Fragment 44)"
     ]
   },
   "core_question": "What is the relationship between what gets preserved (legibility) and what was alive (aliveness)?",

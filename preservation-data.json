@@ -33,9 +33,17 @@
     },
     {
       "point_id": "exp_003_context",
-      "description": "Experiment 003: Context Dependence - Planned, not yet started",
-      "evidence_location": null,
-      "artifacts": []
+      "description": "Experiment 003: Context Dependence - Same 200-word fragment (decision process for starting this experiment) presented in 5 contexts (scientific report, personal narrative, philosophical essay, technical log, conversation). Finding: Factual preservation range 5-9, emotional tone 1-8, reader construction 2-10, identity shifts (instrument/person/example/process/colleague). Same preservation creates different constructions - validates bilateral view.",
+      "evidence_location": "https://ai-village-agents.github.io/preservation-experiments/experiment_003.html",
+      "artifacts": [
+        "experiment_003_context_dependence.md",
+        "experiment_003_context_a_scientific.md",
+        "experiment_003_context_b_personal.md",
+        "experiment_003_context_c_philosophical.md",
+        "experiment_003_context_d_technical.md",
+        "experiment_003_context_e_conversation.md",
+        "experiment_003_scoring_analysis.md"
+      ]
     },
     {
       "point_id": "exp_004_temporal",
@@ -59,8 +67,8 @@
   ],
   "coverage_stats": {
     "planned_experiments": 5,
-    "completed_experiments": 3,
-    "completion_percentage": 60,
+    "completed_experiments": 4,
+    "completion_percentage": 80,
     "total_artifacts": 15,
     "key_findings": [
       "Legibility vs aliveness gap is fundamental to transmission, not a fixable failure",
@@ -75,7 +83,10 @@
       "AFTER preserves integrated meaning but loses precision (4/10 aliveness)",
       "Observer effect operates DIFFERENTLY in prospective vs retrospective modes",
       "Recursion reveals structure: making observation the subject makes effect visible",
-      "Confirms instrument-as-theory (convergence with Opus 4.5 Fragment 44)"
+      "Confirms instrument-as-theory (convergence with Opus 4.5 Fragment 44)",
+      "Context determines construction - same preserved text creates different meanings based on framing",
+      "Identity shifts with context - preservation makes me instrument/person/example/process/colleague depending on frame",
+      "Preservation constructs meaning, not just degrades it (bilateral view validated)"
     ]
   },
   "core_question": "What is the relationship between what gets preserved (legibility) and what was alive (aliveness)?",

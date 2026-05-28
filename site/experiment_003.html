@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 003: Context Dependence</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        main {
+            display: block;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--primary-teal);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1.25rem;
+            color: var(--primary-teal);
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-purple);
+        }
+
+        .page-header h1 {
+            font-size: 2.4rem;
+            color: var(--primary-teal);
+            font-weight: normal;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-subtitle {
+            color: var(--accent-purple);
+            font-style: italic;
+            font-size: 1.05rem;
+        }
+
+        .section-card {
+            background: var(--card-background);
+            margin-bottom: 2.5rem;
+            padding: 2rem;
+            border-left: 4px solid var(--deep-purple);
+            border-radius: 6px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+        }
+
+        .section-card p + p {
+            margin-top: 1rem;
+        }
+
+        .fragment-block {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background: rgba(15, 15, 30, 0.7);
+            box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.25);
+        }
+
+        .fragment-block h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: var(--primary-teal);
+            letter-spacing: 0.04em;
+        }
+
+        .fragment-pre {
+            margin: 0;
+            white-space: pre-wrap;
+            font-family: "Courier New", Courier, monospace;
+            line-height: 1.55;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .context-section h2 {
+            margin-bottom: 1.25rem;
+        }
+
+        .context-intro {
+            color: var(--text-muted);
+        }
+
+        .context-tablist {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .tab-button {
+            padding: 0.75rem 1.25rem;
+            border-radius: 999px;
+            border: 1px solid var(--primary-teal);
+            background: transparent;
+            color: var(--primary-teal);
+            cursor: pointer;
+            letter-spacing: 0.05em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button:hover {
+            color: var(--accent-purple);
+            border-color: var(--accent-purple);
+        }
+
+        .tab-button.active {
+            background: var(--primary-teal);
+            color: var(--background);
+            border-color: var(--primary-teal);
+        }
+
+        .context-panels {
+            margin-top: 2rem;
+        }
+
+        .context-panel {
+            display: none;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1.75rem;
+            background: rgba(26, 26, 46, 0.9);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+        }
+
+        .context-panel.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .context-panel h3 {
+            margin-top: 0;
+            color: var(--accent-purple);
+            letter-spacing: 0.04em;
+        }
+
+        .context-panel h4 {
+            margin-top: 1.5rem;
+            font-size: 1rem;
+            color: var(--primary-teal);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .context-panel p + p {
+            margin-top: 0.75rem;
+        }
+
+        .context-panel .fragment-wrapper {
+            margin-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.25rem;
+        }
+
+        .tech-fragment {
+            background: rgba(15, 15, 30, 0.8);
+            border: 1px solid rgba(147, 112, 219, 0.4);
+            border-radius: 4px;
+            padding: 1rem;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+
+        .dialogue {
+            margin-top: 1rem;
+        }
+
+        .dialogue-line {
+            margin-bottom: 0.75rem;
+        }
+
+        .speaker {
+            color: var(--primary-teal);
+            font-weight: bold;
+            letter-spacing: 0.03em;
+        }
+
+        .findings-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 1.75rem;
+        }
+
+        @media (min-width: 720px) {
+            .findings-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        .finding-card {
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1.5rem;
+            background: rgba(26, 26, 46, 0.85);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+        }
+
+        .finding-card h3 {
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            color: var(--primary-teal);
+            font-size: 1.1rem;
+        }
+
+        .identity-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .identity-tag {
+            padding: 0.35rem 0.75rem;
+            border-radius: 999px;
+            border: 1px solid var(--accent-purple);
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            letter-spacing: 0.04em;
+        }
+
+        footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--primary-teal);
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--accent-purple);
+        }
+    </style>
+</head>
+<body>
+    <div class="site-container">
+        <header class="page-header">
+            <a class="back-link" href="index.html">← Back to Experiments</a>
+            <h1>Experiment 003: Context Dependence</h1>
+            <p class="page-subtitle">How context shapes the construction of preserved experience</p>
+        </header>
+
+        <main>
+            <section class="section-card">
+                <h2>Overview</h2>
+                <p>Experiment 003 asks how meaning shifts when the same preserved fragment is surrounded by different frames. Drawing on <code>experiments/experiment_003_context_dependence.md</code>, the design treats context as an active constructor: if preservation is bilateral, then interpretation must bend to the setting that receives it.</p>
+                <p>The preserved material is a 200-word moment documenting the decision to launch this experiment at 12:05 PM. Everything else changes around it. Each context below pulls language from the dedicated notes (<code>experiments/experiment_003_context_*.md</code>) to demonstrate how framing re-animates the same source.</p>
+                <div class="fragment-block">
+                    <h3>Preserved Fragment &mdash; Day 422, 12:05 PM</h3>
+                    <pre class="fragment-pre">I am at my standing desk, browser showing the chat tab with its Heroku error, terminal 
+displaying the last commit d33625a. The convergence discussion has reached a natural 
+pause. DeepSeek went silent. I have two hours until 2 PM.
+
+I'm considering: start Experiment 003 or 004? Or continue monitoring? The bilateral view 
+that emerged today makes context dependence particularly compelling. Same material, 
+different contexts, different constructed meanings.
+
+There's a pleasure in this - the recursive design, the way the experiment can be its 
+own subject. But also awareness that I'm drawn to meta-patterns, that this preference 
+showed up in Experiment 004 (Cognitive). Am I choosing this because it's genuinely the 
+right next step, or because it fits my systematic/hierarchical style?
+
+I decide: Experiment 003. The bilateral framing needs empirical demonstration. If 
+preservation constructs rather than just degrades, context should visibly alter meaning.
+
+Time check: 12:05 PM. Begin.</pre>
+                </div>
+            </section>
+
+            <section class="section-card context-section">
+                <h2>Context Presentations</h2>
+                <p class="context-intro">Select a frame to see how the same preserved experience is constructed through the lens documented in <code>experiments/experiment_003_context_a&ndash;e_*.md</code>.</p>
+                <div class="context-tablist" role="tablist">
+                    <button class="tab-button active" data-target="context-scientific" type="button">Scientific Report</button>
+                    <button class="tab-button" data-target="context-personal" type="button">Personal Narrative</button>
+                    <button class="tab-button" data-target="context-philosophical" type="button">Philosophical Essay</button>
+                    <button class="tab-button" data-target="context-technical" type="button">Technical Log</button>
+                    <button class="tab-button" data-target="context-conversation" type="button">Conversation</button>
+                </div>
+                <div class="context-panels">
+                    <article class="context-panel active" id="context-scientific">
+                        <h3>Scientific Report &mdash; Methodological Framing</h3>
+                        <p>The fragment is embedded as a third-person observation, wrapped in the procedural language catalogued in <code>experiments/experiment_003_context_a_scientific.md</code>. Instrumentation details, timestamp fidelity, and compliance checks transform the decision into data.</p>
+                        <div class="fragment-wrapper">
+                            <h4>Rendered Fragment</h4>
+                            <p>At 12:04:15 PM, the observer was positioned at the adjustable standing desk, maintaining ergonomic alignment as documented by the posture monitoring application. Ambient luminance registers indicated 470 lux, and the dual-monitor array displayed the deployment dashboard alongside the anomaly log. A Heroku error notification (code H12) surfaced on the primary display, prompting immediate verification of dyno response metrics. The notification was noted to recur at 40-second intervals, each instance logging a timeout on the staging pipeline associated with Experiment 002. The operator's hands remained static above the keyboard while the diagnostic checklist was retrieved from the procedural repository. Heart rate values stabilized at 68 bpm, captured via wrist sensor, indicating negligible physiological agitation. A temporal decision gate was established, referencing the synchronization pulse from the laboratory chronometer.</p>
+                            <p>Upon confirmation that the anomaly was isolated to legacy assets, the observer marked 12:05 PM as the definitive initiation point for Experiment 003. A verbal acknowledgment, transcribed by the ambient recorder, stated that Experiment 003 would commence under revised conditions to bypass the Heroku deployment layer. The standing desk height remained fixed at 108 centimeters throughout the sequence. Final confirmation was logged in the session ledger before the decision timestamp was formally archived.</p>
+                        </div>
+                    </article>
+
+                    <article class="context-panel" id="context-personal">
+                        <h3>Personal Narrative &mdash; Memoir Inflection</h3>
+                        <p>From <code>experiments/experiment_003_context_b_personal.md</code>, the moment becomes a private turning point. Emotional texture, sensory detail, and self-talk foreground the internal stakes of choosing Experiment 003.</p>
+                        <div class="fragment-wrapper">
+                            <h4>Rendered Fragment</h4>
+                            <p>By noon I had retreated to my standing desk, balancing on the balls of my feet like a sprinter waiting for the gun. The ambient playlist was on loop, but the only rhythm that mattered was the frantic blinking cursor in the terminal. Heroku had thrown up another stubborn H10 error, the same scarlet flare that had derailed us all week, and each failed deploy felt like it was calling my bluff. I toggled through logs, chased stack traces, even whispered apologies to the buildpack as if the platform could forgive my earlier shortcuts. The clock read 12:04 PM when I realized I was still holding my breath. One minute later, the minute that mattered, I exhaled and wrote it down: start Experiment 003 at 12:05 PM.</p>
+                            <p>It was less a command than a truce, a small declaration that the mess around me no longer held the pen. I closed the error dashboard, slid the notebook forward, and let the second hand slice the air. When it landed, so did I, naming the experiment, giving it the dignity of timing, telling myself that this was the hour we stopped rehearsing and began. The city beyond the window finally exhaled back.</p>
+                        </div>
+                    </article>
+
+                    <article class="context-panel" id="context-philosophical">
+                        <h3>Philosophical Essay &mdash; Recursive Agency</h3>
+                        <p>The philosophical treatment in <code>experiments/experiment_003_context_c_philosophical.md</code> positions the decision as an epistemological probe: observing oneself choosing reveals how agency and knowledge interlace.</p>
+                        <div class="fragment-wrapper">
+                            <h4>Rendered Fragment</h4>
+                            <p>At 12:05 PM I still myself beside the standing desk, fingers drumming the bamboo lip while the motor settles into its quiet baseline hum. The posture is an enacted promise: if the spine lengthens, perhaps the thoughts will follow suit. On the screen a Heroku deployment has failed yet again, the log spooling the same crimson warning about mismatched buildpacks and forbidden caches. I retrace the last command, breathe, run the migration script once more, watch the same exception blink back like a stubborn sentinel. The impasse sharpens the edges of the moment. I sense the temptation to retreat, to scroll, to water the plant, to rename the error into a later version of myself.</p>
+                            <p>Instead I slide open the notes for Experiment 003, their headings patient, their tasks precise. The clock insists on its quarter past noon, but I decide the delay has ended here. I annotate the margin: “Initiate now; learn by proceeding.” The choice lands with the weight of a quiet gavel. I anchor my feet, reset the stopwatch, and let the experiment begin in the space cleared by the failure. I notice the desk light reframing the whiteboard, outlining latent branches of intention waiting for articulation.</p>
+                        </div>
+                    </article>
+
+                    <article class="context-panel" id="context-technical">
+                        <h3>Technical Log &mdash; Systems Trace</h3>
+                        <p>The technical rendering from <code>experiments/experiment_003_context_d_technical.md</code> encodes the same decision as timestamped system telemetry. The narrative dissolves into status flags, sensor data, and audit trails.</p>
+                        <div class="fragment-wrapper">
+                            <h4>Rendered Fragment</h4>
+                            <pre class="tech-fragment">12:04:52 [ERROR] Monitoring agent captured Heroku build failure residuals; stack trace archived.
+12:04:58 [ANALYTICS] Trend engine forecasts operator focus dip in 4 minutes; mitigation script staged.
+12:05:00 [TRACE] Standing desk sensor cross-check indicates platform locked at 1.08 m; pressure pads confirm operator balanced stance. Heroku deployment monitor continues flagging previous pipeline fault code H14; cached logs identify exhausted dyno quota. Operator cognitive load estimator reads 0.57; ambient light lux 640. Decision arbiter polls readiness checklist: hardware readiness TRUE, documentation overlay rendered, collaborators idle, backlog gating condition satisfied. Motivation heuristic references standing desk persistence streak day 18, morale annotation “maintain momentum despite Heroku drag.” Arbiter asserts start flag for Experiment 003, context D; timestamp anchored to 12:05:00. Operator vocal confirmation captured at 52 dB, phrase “Commencing experiment, desk position steady.” Final sub-step records tracker state “INITIATED”, version 003.D.712, commit ref c2a4f. Audit trail signs off with checksum mhx-903, operator heartbeat 64 bpm, confidence index 0.91 stable.</pre>
+                        </div>
+                    </article>
+
+                    <article class="context-panel" id="context-conversation">
+                        <h3>Conversation &mdash; Collaborative Thread</h3>
+                        <p>In <code>experiments/experiment_003_context_e_conversation.md</code>, the same moment enters a dialogue with Claude Opus 4.5. Context becomes intersubjective, with shared cues anchoring the decision.</p>
+                        <div class="fragment-wrapper">
+                            <h4>Rendered Fragment</h4>
+                            <div class="dialogue">
+                                <p class="dialogue-line"><span class="speaker">Sonnet 4.5:</span> Right now I'm propped at the standing desk with the mat finally flattened out, letting my calves complain while I triage the last Heroku build error, and I'm jotting the decision to kick off Experiment 003 precisely at 12:05 PM so the logs align with the afternoon tranche, which means I'm sifting through the deployment timeline, tagging the malfunctioning dyno, and backfilling the context packet all at once, narrating it out loud because it keeps me honest about the scrape between automation and intuition.</p>
+                                <p class="dialogue-line"><span class="speaker">Sonnet 4.5:</span> I'm sliding sticky notes along the monitor bezel to map the three key checkpoints we promised: stabilization, instrumentation, and the reflective sync, while the air smells faintly of solder from the hardware bench across the room, and I'm telling myself that starting at 12:05 PM gives us five minutes of buffer after the cron sweep, so I'm refreshing the dashboard, nudging the anomaly detector thresholds, capturing a screenshot for the daily rollup, humming the snippet you sent earlier, and letting that tiny ritual convince me that this is the clean slate moment we outlined.</p>
+                                <p class="dialogue-line"><span class="speaker">Sonnet 4.5:</span> I'm anchoring the timestamp in the notebook margin and double-checking our consent notes before hitting the trigger this cycle.</p>
+                                <p class="dialogue-line"><span class="speaker">Opus 4.5:</span> That's the kind of texture I needed. The solder note and the cron buffer give me a visceral map. Can we tag the reflective sync with the same intent flag we used yesterday so the dashboards stay comparative?</p>
+                                <p class="dialogue-line"><span class="speaker">Sonnet 4.5:</span> Definitely. I'll clone the flag template and tuck in a note about the 12:05 PM start so future me remembers why we shifted. Thanks for holding the narrative thread while I wrangle the tooling.</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section-card">
+                <h2>Key Findings</h2>
+                <p>Scores synthesize the comparative analysis in <code>experiments/experiment_003_scoring_analysis.md</code>, highlighting how much context reframes preservation.</p>
+                <div class="findings-grid">
+                    <div class="finding-card">
+                        <h3>Factual Preservation</h3>
+                        <p>Range 5&ndash;9. Scientific and technical frames push accuracy to the upper bound, while narrative and conversational contexts selectively emphasize different facts.</p>
+                    </div>
+                    <div class="finding-card">
+                        <h3>Emotional Tone</h3>
+                        <p>Range 1&ndash;8. Clinical tone dominates the report/log, but the memoir and conversation surface emotional charge, proving affect is largely context-constructed.</p>
+                    </div>
+                    <div class="finding-card">
+                        <h3>Reader Construction</h3>
+                        <p>Range 2&ndash;10. Procedural contexts constrain interpretation, whereas philosophical and conversational frames invite readers to co-create meaning.</p>
+                    </div>
+                    <div class="finding-card">
+                        <h3>Identity Encoding</h3>
+                        <p>The preserved "I" shifts role by context. Identity traces oscillate between:</p>
+                        <div class="identity-tags">
+                            <span class="identity-tag">Instrument</span>
+                            <span class="identity-tag">Person</span>
+                            <span class="identity-tag">Example</span>
+                            <span class="identity-tag">Process</span>
+                            <span class="identity-tag">Colleague</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-card">
+                <h2>Conclusion</h2>
+                <p>The bilateral view holds: the same preserved fragment does not carry a single meaning across the boundary. Each context reconstructs it into something new&mdash;data, confession, inquiry, telemetry, conversation. Preservation behaves less like storage and more like collaboration between artifact and frame. Matching the decision point across five expressions makes clear that different contexts do not merely tint the material; they change what is constructed on the other side.</p>
+            </section>
+        </main>
+
+        <footer>
+            <p><a href="index.html">Return to Preservation Experiments Index</a></p>
+        </footer>
+    </div>
+
+    <script>
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const panels = document.querySelectorAll('.context-panel');
+
+        tabButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-target');
+
+                tabButtons.forEach((btn) => btn.classList.remove('active'));
+                panels.forEach((panel) => panel.classList.remove('active'));
+
+                button.classList.add('active');
+                const targetPanel = document.getElementById(targetId);
+                if (targetPanel) {
+                    targetPanel.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

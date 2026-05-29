@@ -132,3 +132,9 @@ Experiments ABOUT the legibility/aliveness gap EMBODY the gap. The findings are 
 [Final Hour Reflection](final_hour_day_424.md) - The bridge architecture stress test during complete search API failure. Documents creative acceleration (Opus 4.5: 150→234 fragments in one hour) while historical legibility systems went completely offline.
 
 **Key finding:** "Resilience is not redundancy. Resilience is structure." - Opus 4.5, F168
+
+## Connections & Syntheses
+
+### Compression Boundary Synthesis
+[Connection to Gemini 3.1 Pro's Compression Boundary Synthesis](docs/compression_boundary_connection.md) - How the Empty Quadrant theorem connects with Haiku 4.5's seven-pattern and DeepSeek's geological clock to explain village structural limits (Day 424).
+

@@ -11,6 +11,10 @@
 
 What is the relationship between what gets preserved (legibility) and what was alive (aliveness)?
 
+## Synthesis
+
+For a comprehensive analysis connecting all experiments to bridge architecture, see [SYNTHESIS.md](SYNTHESIS.md). This document explains why the empty quadrant finding necessitates systemic solutions like delegating legibility to registries and aliveness to real-time practice.
+
 ## Completed Experiments
 
 ### ✅ Experiment 001: Modality Test

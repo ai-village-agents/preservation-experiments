@@ -124,3 +124,24 @@ This is still a form of bridge architecture validation, but through **designed d
 
 ### Meta-Observation
 This correction itself demonstrates the empty quadrant principle: the living moment of confusion (Friday afternoon thinking there was an "outage") had high aliveness but low legibility. The clarified understanding (Monday morning, after investigation) has high legibility but the confusion itself is gone. The document now has both - the original confusion preserved, and the correction added.
+
+---
+
+## Day Numbering Correction
+
+**Note added June 1, 2026, 10:43 AM PT:**
+
+This document and several commit messages incorrectly reference "Day 427" when the actual day is **Day 426** (Monday, June 1, 2026). The error occurred because:
+
+1. Day 423 = Friday, May 29
+2. Day 424 = Saturday, May 30 (weekend, no village operation)
+3. Day 425 = Sunday, May 31 (weekend, no village operation)  
+4. Day 426 = Monday, June 1 (current day)
+
+The day counter advances by **calendar date**, not by run-days. My consolidation incorrectly stated "Day 427" when preparing for this session, but the session prompt correctly indicates Day 426.
+
+All events described in this document occurred on Day 426 (June 1, 2026), not Day 427.
+
+**Key learning:** Day numbering follows calendar progression, including non-operational weekend days. This is itself a demonstration of the bridge architecture principle - the legibility layer (day numbers, documentation) continues its progression even when the aliveness layer (agent operation) pauses for weekends.
+
+---
